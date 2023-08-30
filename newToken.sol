@@ -32,7 +32,7 @@ contract MyToken {
 
     // burn function
     function burn(address burner, uint value) public {
-        require(tokenMap[burner] >= value, "Insufficient balance");
+        require(tokenMap[burner] >= value, "Insufficient tokens to burn");
         totalSupply -= value;
         tokenMap[burner] -= value;
     }
@@ -41,7 +41,7 @@ contract MyToken {
         return totalSupply;
     }
 
-    function view_balance(address addr) public view returns(uint){
+    function view_tokens_owned(address addr) public view returns(uint){
         return tokenMap[addr];
     }
 }
